@@ -1,0 +1,6 @@
+framework module Pods_API_Integration_API_IntegrationUITests {
+  umbrella header "Pods-API Integration-API IntegrationUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
