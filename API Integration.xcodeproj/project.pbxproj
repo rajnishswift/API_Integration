@@ -20,6 +20,7 @@
 		B9D36D7924D06E70009F5B55 /* API_IntegrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D36D7824D06E70009F5B55 /* API_IntegrationUITests.swift */; };
 		B9E8CEAF24D074F6002626A0 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E8CEAE24D074F6002626A0 /* APIConstants.swift */; };
 		B9E8CEB324D075FC002626A0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E8CEB224D075FC002626A0 /* NetworkManager.swift */; };
+		B9E8CEB524D1CEE0002626A0 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E8CEB424D1CEE0002626A0 /* ApiManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		B9D36D7A24D06E70009F5B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9E8CEAE24D074F6002626A0 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		B9E8CEB224D075FC002626A0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B9E8CEB424D1CEE0002626A0 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		BFD0E1DACB0D1DA7EC0FFF12 /* Pods_API_IntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_API_IntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CADAF6CADBCBE69561A4048D /* Pods-API Integration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API Integration.debug.xcconfig"; path = "Target Support Files/Pods-API Integration/Pods-API Integration.debug.xcconfig"; sourceTree = "<group>"; };
 		D180AB900459957AECE4264F /* Pods-API Integration-API IntegrationUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API Integration-API IntegrationUITests.debug.xcconfig"; path = "Target Support Files/Pods-API Integration-API IntegrationUITests/Pods-API Integration-API IntegrationUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,7 +132,7 @@
 		B9D36D5524D06E6E009F5B55 /* API Integration */ = {
 			isa = PBXGroup;
 			children = (
-				B9E8CEB124D075ED002626A0 /* Networking */,
+				B9E8CEB124D075ED002626A0 /* Networking Layer */,
 				B9E8CEB024D074FA002626A0 /* Constants */,
 				B9D36D5624D06E6E009F5B55 /* AppDelegate.swift */,
 				B9D36D5824D06E6E009F5B55 /* SceneDelegate.swift */,
@@ -169,12 +171,13 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		B9E8CEB124D075ED002626A0 /* Networking */ = {
+		B9E8CEB124D075ED002626A0 /* Networking Layer */ = {
 			isa = PBXGroup;
 			children = (
 				B9E8CEB224D075FC002626A0 /* NetworkManager.swift */,
+				B9E8CEB424D1CEE0002626A0 /* ApiManager.swift */,
 			);
-			path = Networking;
+			path = "Networking Layer";
 			sourceTree = "<group>";
 		};
 		D65DA7C63AA113E6B005C979 /* Pods */ = {
@@ -431,6 +434,7 @@
 			files = (
 				B9E8CEAF24D074F6002626A0 /* APIConstants.swift in Sources */,
 				B9D36D5B24D06E6E009F5B55 /* ViewController.swift in Sources */,
+				B9E8CEB524D1CEE0002626A0 /* ApiManager.swift in Sources */,
 				B9E8CEB324D075FC002626A0 /* NetworkManager.swift in Sources */,
 				B9D36D5724D06E6E009F5B55 /* AppDelegate.swift in Sources */,
 				B9D36D5924D06E6E009F5B55 /* SceneDelegate.swift in Sources */,

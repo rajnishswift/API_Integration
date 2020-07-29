@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-// This is the networking layer of your app.
+// This is the server side of networking Layer
 
 class NetworkManager {
     
