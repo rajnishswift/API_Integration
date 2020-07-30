@@ -13,7 +13,7 @@ import Alamofire
 
 class NetworkManager {
     
-    static let global = NetworkManager()
+    static let shared = NetworkManager()
     
     func globalGetRequest(urlString: String, success: @escaping (Data?) -> (), failure: @escaping (Error?) -> ()) {
         

@@ -12,12 +12,14 @@
 		A029A1025D1AB1AA4D0C8A00 /* Pods_API_Integration_API_IntegrationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92ED2EC9CAE3D6DE3DC19ED9 /* Pods_API_Integration_API_IntegrationUITests.framework */; };
 		B9D36D5724D06E6E009F5B55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D36D5624D06E6E009F5B55 /* AppDelegate.swift */; };
 		B9D36D5924D06E6E009F5B55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D36D5824D06E6E009F5B55 /* SceneDelegate.swift */; };
-		B9D36D5B24D06E6E009F5B55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D36D5A24D06E6E009F5B55 /* ViewController.swift */; };
+		B9D36D5B24D06E6E009F5B55 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D36D5A24D06E6E009F5B55 /* ProductsViewController.swift */; };
 		B9D36D5E24D06E6E009F5B55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D36D5C24D06E6E009F5B55 /* Main.storyboard */; };
 		B9D36D6024D06E70009F5B55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D36D5F24D06E70009F5B55 /* Assets.xcassets */; };
 		B9D36D6324D06E70009F5B55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D36D6124D06E70009F5B55 /* LaunchScreen.storyboard */; };
 		B9D36D6E24D06E70009F5B55 /* API_IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D36D6D24D06E70009F5B55 /* API_IntegrationTests.swift */; };
 		B9D36D7924D06E70009F5B55 /* API_IntegrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D36D7824D06E70009F5B55 /* API_IntegrationUITests.swift */; };
+		B9DE156B24D3198A007CDE21 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DE156A24D3198A007CDE21 /* ProductModel.swift */; };
+		B9DE156D24D319BB007CDE21 /* Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DE156C24D319BB007CDE21 /* Information.swift */; };
 		B9E8CEAF24D074F6002626A0 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E8CEAE24D074F6002626A0 /* APIConstants.swift */; };
 		B9E8CEB324D075FC002626A0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E8CEB224D075FC002626A0 /* NetworkManager.swift */; };
 		B9E8CEB524D1CEE0002626A0 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E8CEB424D1CEE0002626A0 /* ApiManager.swift */; };
@@ -48,7 +50,7 @@
 		B9D36D5324D06E6E009F5B55 /* API Integration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "API Integration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D36D5624D06E6E009F5B55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D36D5824D06E6E009F5B55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B9D36D5A24D06E6E009F5B55 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B9D36D5A24D06E6E009F5B55 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		B9D36D5D24D06E6E009F5B55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9D36D5F24D06E70009F5B55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9D36D6224D06E70009F5B55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +61,8 @@
 		B9D36D7424D06E70009F5B55 /* API IntegrationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "API IntegrationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D36D7824D06E70009F5B55 /* API_IntegrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_IntegrationUITests.swift; sourceTree = "<group>"; };
 		B9D36D7A24D06E70009F5B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9DE156A24D3198A007CDE21 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		B9DE156C24D319BB007CDE21 /* Information.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Information.swift; sourceTree = "<group>"; };
 		B9E8CEAE24D074F6002626A0 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		B9E8CEB224D075FC002626A0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B9E8CEB424D1CEE0002626A0 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
@@ -133,14 +137,12 @@
 			isa = PBXGroup;
 			children = (
 				B9E8CEB124D075ED002626A0 /* Networking Layer */,
+				B9DE156924D3195F007CDE21 /* Models */,
+				B9DE156E24D319CA007CDE21 /* Controllers */,
+				B9DE157024D31A09007CDE21 /* Resources */,
 				B9E8CEB024D074FA002626A0 /* Constants */,
-				B9D36D5624D06E6E009F5B55 /* AppDelegate.swift */,
-				B9D36D5824D06E6E009F5B55 /* SceneDelegate.swift */,
-				B9D36D5A24D06E6E009F5B55 /* ViewController.swift */,
-				B9D36D5C24D06E6E009F5B55 /* Main.storyboard */,
-				B9D36D5F24D06E70009F5B55 /* Assets.xcassets */,
-				B9D36D6124D06E70009F5B55 /* LaunchScreen.storyboard */,
-				B9D36D6424D06E70009F5B55 /* Info.plist */,
+				B9DE156F24D319FE007CDE21 /* App Delegates */,
+				B9DE156C24D319BB007CDE21 /* Information.swift */,
 			);
 			path = "API Integration";
 			sourceTree = "<group>";
@@ -161,6 +163,58 @@
 				B9D36D7A24D06E70009F5B55 /* Info.plist */,
 			);
 			path = "API IntegrationUITests";
+			sourceTree = "<group>";
+		};
+		B9DE156924D3195F007CDE21 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B9DE156A24D3198A007CDE21 /* ProductModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B9DE156E24D319CA007CDE21 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B9D36D5A24D06E6E009F5B55 /* ProductsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B9DE156F24D319FE007CDE21 /* App Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				B9D36D5624D06E6E009F5B55 /* AppDelegate.swift */,
+				B9D36D5824D06E6E009F5B55 /* SceneDelegate.swift */,
+			);
+			path = "App Delegates";
+			sourceTree = "<group>";
+		};
+		B9DE157024D31A09007CDE21 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B9DE157224D31A54007CDE21 /* Assets */,
+				B9DE157124D31A42007CDE21 /* Meta Data */,
+				B9D36D5C24D06E6E009F5B55 /* Main.storyboard */,
+				B9D36D6124D06E70009F5B55 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B9DE157124D31A42007CDE21 /* Meta Data */ = {
+			isa = PBXGroup;
+			children = (
+				B9D36D6424D06E70009F5B55 /* Info.plist */,
+			);
+			path = "Meta Data";
+			sourceTree = "<group>";
+		};
+		B9DE157224D31A54007CDE21 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				B9D36D5F24D06E70009F5B55 /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		B9E8CEB024D074FA002626A0 /* Constants */ = {
@@ -433,10 +487,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9E8CEAF24D074F6002626A0 /* APIConstants.swift in Sources */,
-				B9D36D5B24D06E6E009F5B55 /* ViewController.swift in Sources */,
+				B9D36D5B24D06E6E009F5B55 /* ProductsViewController.swift in Sources */,
+				B9DE156D24D319BB007CDE21 /* Information.swift in Sources */,
 				B9E8CEB524D1CEE0002626A0 /* ApiManager.swift in Sources */,
 				B9E8CEB324D075FC002626A0 /* NetworkManager.swift in Sources */,
 				B9D36D5724D06E6E009F5B55 /* AppDelegate.swift in Sources */,
+				B9DE156B24D3198A007CDE21 /* ProductModel.swift in Sources */,
 				B9D36D5924D06E6E009F5B55 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,7 +669,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YZYQ4HKGUN;
-				INFOPLIST_FILE = "API Integration/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/API Integration/Resources/Meta Data/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -632,7 +688,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YZYQ4HKGUN;
-				INFOPLIST_FILE = "API Integration/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/API Integration/Resources/Meta Data/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

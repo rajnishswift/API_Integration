@@ -1,36 +1,12 @@
 //
-//  ViewController.swift
+//  Information.swift
 //  API Integration
 //
-//  Created by Akshansh Thakur on 28/07/20.
+//  Created by Akshansh Thakur on 30/07/20.
 //  Copyright © 2020 Akshansh Thakur. All rights reserved.
 //
 
-/*
- 
- 
- API is an interface through which Client communicates with a Server
- 
- 1. Server serves data through an API.
- 2. App Receives this data in JSON format
- 3. Application converts this JSON Data to Models in swift
- 4. Then we populate our data from models in UI
- 
-*/
-
-import UIKit
-
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        
-    }
-
-
-}
+import Foundation
 
 /*
  What is a model

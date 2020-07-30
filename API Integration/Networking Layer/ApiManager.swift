@@ -13,30 +13,29 @@ import Foundation
 
 struct ApiManager {
     
-    func fetchProducts(urlString: String, success: @escaping () -> (), failure: @escaping () -> ()) {
+    static let shared = ApiManager()
+    
+    func fetchProducts(urlString: String, success: @escaping (ProductModel) -> (), failure: @escaping (Error?) -> ()) {
         
-        NetworkManager.global.globalGetRequest(urlString: urlString, success: { (data) in
-            // Process Data
-            // After processing data return it in completionhandler
+        NetworkManager.shared.globalGetRequest(urlString: urlString, success: { (response) in
+            
+            guard let data = response else {
+                return failure(nil)
+            }
+            
+            do {
+                let products = try JSONDecoder().decode(ProductModel.self, from: data)
+                success(products)
+            } catch let error {
+                failure(error)
+            }
+            
         }) { (error) in
-            // Print error or show popup
+            failure(error)
         }
         
     }
     
-}
-
-
-// THIS IS OUR MODEL
-
-struct ProductModel {
-    var product: [Product]
-}
-
-struct Product {
-    var id: Int
-    var image: String
-    var name: String
 }
 
 
