@@ -9,10 +9,10 @@
 import Foundation
 
 struct ProductModel: Decodable {
-    var product: [Product]
+    var products: [ProductValue]
 }
 
-struct Product: Decodable {
+struct ProductValue: Decodable {
     var id: Int
     var image: String
     var name: String

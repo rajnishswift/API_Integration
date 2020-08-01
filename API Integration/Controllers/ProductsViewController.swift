@@ -19,10 +19,12 @@
 */
 
 import UIKit
+import CoreData
+import Reachability
 
-class ProductsViewController: UIViewController {
+class ProductsViewController: BaseViewController {
     
-    var products: ProductModel!
+    var products = [ProductValue]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,18 +37,88 @@ class ProductsViewController: UIViewController {
         
         ApiManager.shared.fetchProducts(urlString: APIConstants.PRODUCTS_URL, success: { (model) in
             
-            debugPrint(model)
+            self.products = model.products
+            self.products.forEach({self.addProductsToDatabase(product: $0)})
             
         }) { (error) in
             
-            if let failureError = error {
-                debugPrint(failureError.localizedDescription)
-            } else {
-                //
+            self.isInternetAvailable { (value) in
+                if value {
+                    debugPrint("Error", error?.localizedDescription ?? "")
+                } else {
+                    // Core Data - data populate.
+                    debugPrint("Require Core Data Use")
+                    print(self.products.count)
+                    self.fetchDataFromDataBase()
+                }
             }
             
         }
         
+    }
+    
+    func addProductsToDatabase(product: ProductValue) {
+        
+        // Check if duplicate exists for this product in database.
+        // If so, do not add this product to database
+        if checkForDuplicateInDataBase(productValue: product) {return}
+        
+        guard let managedObjectContext = DataBaseManager.manager.getContext() else {return}
+        
+        /* Find the entity you are trying to insert object in */
+        
+        guard let productEntity = NSEntityDescription.entity(forEntityName: "Product", in: managedObjectContext) else {return}
+        
+        /* Insert Data into Product Entity */
+        let managedProduct = NSManagedObject(entity: productEntity, insertInto: managedObjectContext)
+        
+        managedProduct.setValue(product.id, forKey: "id")
+        managedProduct.setValue(product.name, forKey: "name")
+        managedProduct.setValue(product.image, forKey: "image")
+        
+        // You have now inserted data into your database, but your context has not been saved.
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error {
+            print("Error: ", error.localizedDescription)
+        }
+        
+    }
+    
+    func fetchDataFromDataBase() {
+        
+        guard let products = DataBaseManager.manager.fetchData(entityName: "Product") else {return}
+        
+        products.forEach { (product) in
+            
+            guard
+                let id = product.value(forKey: "id") as? Int,
+                let name = product.value(forKey: "name") as? String,
+                let image = product.value(forKey: "image") as? String
+                else {return}
+            
+            let viewProduct = ProductValue(id: id, image: image, name: name)
+            self.products.append(viewProduct)
+            
+        }
+        
+    }
+    
+}
+
+
+/* Core Data Helper Methods */
+extension ProductsViewController {
+    
+    func checkForDuplicateInDataBase(productValue: ProductValue) -> Bool {
+        
+        guard let products = DataBaseManager.manager.fetchData(entityName: "Product") else {return false}
+        
+        return products.contains { (dbProduct) -> Bool in
+            guard let id = dbProduct.value(forKey: "id") as? Int else {return false}
+            return id == productValue.id
+        }
     }
     
 }

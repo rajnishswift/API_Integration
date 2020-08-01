@@ -8,6 +8,7 @@ target 'API Integration' do
   # Pods for API Integration
   pod 'Alamofire'
   pod 'SDWebImage'
+  pod 'ReachabilitySwift'
 
   target 'API IntegrationTests' do
     inherit! :search_paths
