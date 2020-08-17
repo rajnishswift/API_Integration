@@ -20,6 +20,6 @@ struct APIConstants {
     
     static let API_BASE_URL = "http://deneershandtools.com:8080/"
     
-    static let PRODUCTS_URL = API_BASE_URL + "getProducts/63"
+    static let PRODUCTS_URL = API_BASE_URL + "getProducts/Spanners"
     
 }

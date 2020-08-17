@@ -13,7 +13,7 @@ struct ProductModel: Decodable {
 }
 
 struct ProductValue: Decodable {
-    var id: Int
+    var id: String
     var image: String
     var name: String
 }

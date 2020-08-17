@@ -53,6 +53,7 @@
 		B93DA8FE24D5A8F100E6F6F0 /* API_Integration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = API_Integration.xcdatamodel; sourceTree = "<group>"; };
 		B93DA90124D5B0F200E6F6F0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B93DA90324D5B5DE00E6F6F0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		B97C937524E9849D00A56B06 /* API_Integration 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "API_Integration 2.xcdatamodel"; sourceTree = "<group>"; };
 		B9D36D5324D06E6E009F5B55 /* API Integration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "API Integration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D36D5624D06E6E009F5B55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D36D5824D06E6E009F5B55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -853,9 +854,10 @@
 		B93DA8FD24D5A8F100E6F6F0 /* API_Integration.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B97C937524E9849D00A56B06 /* API_Integration 2.xcdatamodel */,
 				B93DA8FE24D5A8F100E6F6F0 /* API_Integration.xcdatamodel */,
 			);
-			currentVersion = B93DA8FE24D5A8F100E6F6F0 /* API_Integration.xcdatamodel */;
+			currentVersion = B97C937524E9849D00A56B06 /* API_Integration 2.xcdatamodel */;
 			path = API_Integration.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

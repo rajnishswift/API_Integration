@@ -93,7 +93,7 @@ class ProductsViewController: BaseViewController {
         products.forEach { (product) in
             
             guard
-                let id = product.value(forKey: "id") as? Int,
+                let id = product.value(forKey: "id") as? String,
                 let name = product.value(forKey: "name") as? String,
                 let image = product.value(forKey: "image") as? String
                 else {return}
@@ -116,7 +116,7 @@ extension ProductsViewController {
         guard let products = DataBaseManager.manager.fetchData(entityName: "Product") else {return false}
         
         return products.contains { (dbProduct) -> Bool in
-            guard let id = dbProduct.value(forKey: "id") as? Int else {return false}
+            guard let id = dbProduct.value(forKey: "id") as? String else {return false}
             return id == productValue.id
         }
     }
