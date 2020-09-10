@@ -15,6 +15,15 @@ typealias Parameter = [String: Any]
 typealias TVDelegates = UITableViewDelegate & UITableViewDataSource
 // This is the server side of networking Layer
 
+
+/*
+  Given an array -- var array = [1, 4, 2, -70, 323, 32]
+ 
+  // You have to find if this array has two numbers such that the sum of two numbers is equal to 'k', where k is let's say 89.
+ 
+ 
+ */
+
 class NetworkManager {
     
     static var shared: NetworkManager {

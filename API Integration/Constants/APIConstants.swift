@@ -13,7 +13,7 @@ import Foundation
  1. Base URL
  2. End URL
  3. Complete URL = Base URL + End URL
- 
+ http://deneershandtools.com:8080/category
  */
 
 struct APIConstants {
@@ -22,4 +22,5 @@ struct APIConstants {
     
     static let PRODUCTS_URL = API_BASE_URL + "getProducts/Spanners"
     
+    static let CATEGORY_URL = API_BASE_URL + "category"
 }

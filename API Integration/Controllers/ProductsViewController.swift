@@ -21,16 +21,23 @@
 import UIKit
 import CoreData
 import Reachability
+import SDWebImage
 
 class ProductsViewController: BaseViewController {
     
+    @IBOutlet var tableView: UITableView!
+
+    
     var products = [ProductValue]()
+    var category = [CategoryValue]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getProducts()
+      
         
+       
     }
     
     func getProducts() {
@@ -39,6 +46,7 @@ class ProductsViewController: BaseViewController {
             
             self.products = model.products
             self.products.forEach({self.addProductsToDatabase(product: $0)})
+            self.tableView.reloadData()
             
         }) { (error) in
             
@@ -50,6 +58,7 @@ class ProductsViewController: BaseViewController {
                     debugPrint("Require Core Data Use")
                     print(self.products.count)
                     self.fetchDataFromDataBase()
+                    
                 }
             }
             
@@ -86,6 +95,7 @@ class ProductsViewController: BaseViewController {
         
     }
     
+    
     func fetchDataFromDataBase() {
         
         guard let products = DataBaseManager.manager.fetchData(entityName: "Product") else {return}
@@ -105,6 +115,7 @@ class ProductsViewController: BaseViewController {
         
     }
     
+    
 }
 
 
@@ -122,6 +133,9 @@ extension ProductsViewController {
     }
     
 }
+
+
+
 
 
 /*
@@ -154,3 +168,49 @@ extension ProductsViewController {
     Note*: Target Action is same as IBAction (Interface Builder Action). Only difference is that Target Action is used programmatically and is triggered through selector functions.
  
  */
+
+extension ProductsViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return products.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductCell
+        
+        let url = products[indexPath.row].image
+        cell.productsLabel.text = products[indexPath.row].name
+        cell.productImage.sd_setImage(with: URL(string: url), completed: nil)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        let button = UIButton()
+        button.setTitle("Get Category", for: .normal)
+        button.backgroundColor = .blue
+        button.layer.cornerRadius = 8
+        button.setTitleColor(.white, for: .normal)
+        
+        button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+        
+        return button
+       
+    }
+    
+    @objc func buttonClicked() {
+        let category = storyboard?.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
+        present(category, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+}

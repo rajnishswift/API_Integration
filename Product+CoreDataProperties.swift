@@ -2,7 +2,7 @@
 //  Product+CoreDataProperties.swift
 //  
 //
-//  Created by Akshansh Thakur on 16/08/20.
+//  Created by Rajnish on 19/08/20.
 //
 //
 
@@ -19,5 +19,6 @@ extension Product {
     @NSManaged public var id: String?
     @NSManaged public var image: String?
     @NSManaged public var name: String?
+    @NSManaged public var category: Category?
 
 }

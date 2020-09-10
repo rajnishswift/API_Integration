@@ -42,4 +42,19 @@ class DataBaseManager {
         
     }
     
+    func fetchCategoryData(entityName: String) -> [NSManagedObject]? {
+           
+           let request = NSFetchRequest<NSManagedObject>(entityName: "Category")
+           
+           do {
+               let fetchedProducts = try getContext()?.fetch(request)
+               return fetchedProducts ?? nil
+           } catch let error {
+               print("Error: ", error.localizedDescription)
+           }
+           
+           return nil
+           
+       }
+    
 }

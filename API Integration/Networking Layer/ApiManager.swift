@@ -36,6 +36,28 @@ struct ApiManager {
         
     }
     
+    func fetchCategory(urlString: String, success: @escaping (CategoryModel) -> (), failure: @escaping (Error?) -> ()) {
+        
+        NetworkManager.shared.globalGetRequest(urlString: urlString, success: { (response) in
+            
+            guard let data = response else {
+                return failure(nil)
+            }
+            
+            do {
+                let category = try JSONDecoder().decode(CategoryModel.self, from: data)
+                success(category)
+            } catch let error {
+                failure(error)
+            }
+            
+        }) { (error) in
+            failure(error)
+        }
+        
+    }
+    
+    
 }
 
 
