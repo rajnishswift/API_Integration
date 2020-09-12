@@ -14,12 +14,14 @@ import SDWebImage
 class CategoryViewController: BaseViewController {
 
     var category = [CategoryValue]()
+    var catName = ""
+    var delegate: CategorySelection?
     
     @IBOutlet var categoryTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         categoryTableView.delegate = self
         getCategory()
     }
@@ -133,5 +135,20 @@ extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        categoryTableView.deselectRow(at: indexPath, animated: true)
+        
+        let cat = category[indexPath.row]
+    
+
+        dismiss(animated: true) {
+            self.delegate?.didSelectCategory(categoryName: cat.name)
+        }
+                
+    }
+    
+   
 
 }

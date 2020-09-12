@@ -8,7 +8,6 @@
 
 /*
  
- 
  API is an interface through which Client communicates with a Server
  
  1. Server serves data through an API.
@@ -23,26 +22,29 @@ import CoreData
 import Reachability
 import SDWebImage
 
+protocol CategorySelection {
+    
+    func didSelectCategory(categoryName: String)
+    
+}
+
 class ProductsViewController: BaseViewController {
     
     @IBOutlet var tableView: UITableView!
-
     
     var products = [ProductValue]()
     var category = [CategoryValue]()
-
+    var catName = "Spanners"
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.delegate = self
         getProducts()
-      
-        
-       
+
     }
     
     func getProducts() {
         
-        ApiManager.shared.fetchProducts(urlString: APIConstants.PRODUCTS_URL, success: { (model) in
+        ApiManager.shared.fetchProducts(urlString: EndPoint.getProducts(catName).url, success: { (model) in
             
             self.products = model.products
             self.products.forEach({self.addProductsToDatabase(product: $0)})
@@ -192,25 +194,63 @@ extension ProductsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
+        let footerView = UIView()
+        
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Get Category", for: .normal)
         button.backgroundColor = .blue
         button.layer.cornerRadius = 8
         button.setTitleColor(.white, for: .normal)
-        
         button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
         
-        return button
+        footerView.addSubview(button)
+        button.topAnchor.constraint(equalTo: footerView.topAnchor).isActive = true
+        button.bottomAnchor.constraint(equalTo: footerView.bottomAnchor).isActive = true
+        button.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -10.0).isActive = true
+        button.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 10.0).isActive = true
+        
+        return footerView
        
     }
     
     @objc func buttonClicked() {
-        let category = storyboard?.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
-        present(category, animated: true, completion: nil)
+        let categoryVC = storyboard?.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
+        categoryVC.delegate = self
+        present(categoryVC, animated: true, completion: nil)
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+   
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let title = UILabel()
+            title.text = catName
+            title.backgroundColor = .red
+            title.textColor = UIColor.white
+            title.textAlignment = .center
+            title.font = title.font.withSize(20)
+        return title
+    }
+    
+  
+    
+}
+
+extension ProductsViewController: CategorySelection {
+    
+    func didSelectCategory(categoryName: String) {
+        catName = categoryName
+        getProducts()
     }
     
 }

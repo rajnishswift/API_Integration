@@ -19,8 +19,28 @@ import Foundation
 struct APIConstants {
     
     static let API_BASE_URL = "http://deneershandtools.com:8080/"
-    
-    static let PRODUCTS_URL = API_BASE_URL + "getProducts/Spanners"
-    
+    static var PRODUCTS_URL = API_BASE_URL + "getProducts/"
     static let CATEGORY_URL = API_BASE_URL + "category"
+    
 }
+
+enum EndPoint {
+    
+    case getProducts(String)
+    case getCategories
+
+}
+
+extension EndPoint {
+    
+    var url: String {
+        switch self {
+        case .getCategories:
+            return APIConstants.CATEGORY_URL
+        case .getProducts(let categoryName):
+            return APIConstants.PRODUCTS_URL + categoryName
+        }
+    }
+    
+}
+
