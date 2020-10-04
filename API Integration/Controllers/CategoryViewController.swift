@@ -24,6 +24,8 @@ class CategoryViewController: BaseViewController {
         
         categoryTableView.delegate = self
         getCategory()
+        
+        title = "Categories"
     }
 
     
@@ -97,6 +99,7 @@ class CategoryViewController: BaseViewController {
             
             let viewCategory = CategoryValue(id: id, name: name, image: "")
             self.category.append(viewCategory)
+            self.categoryTableView.reloadData()
             
         }
         
@@ -111,8 +114,8 @@ extension CategoryViewController {
         guard let category = DataBaseManager.manager.fetchCategoryData(entityName: "Category") else {return false}
         
         return category.contains { (dbCategory) -> Bool in
-            guard let id = dbCategory.value(forKey: "id") as? String else {return false}
-            return id == "\(categoryValue.id)"
+            guard let id = dbCategory.value(forKey: "name") as? String else {return false}
+            return id == "\(categoryValue.name)"
         }
     }
     
@@ -142,10 +145,14 @@ extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cat = category[indexPath.row]
     
-
         dismiss(animated: true) {
             self.delegate?.didSelectCategory(categoryName: cat.name)
         }
+        
+        let productVC = storyboard?.instantiateViewController(withIdentifier: "ProductsViewController") as! ProductsViewController
+        productVC.catName = cat.name
+        
+        navigationController?.pushViewController(productVC, animated: true)
                 
     }
     

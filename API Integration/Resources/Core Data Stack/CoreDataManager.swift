@@ -43,18 +43,34 @@ class DataBaseManager {
     }
     
     func fetchCategoryData(entityName: String) -> [NSManagedObject]? {
-           
-           let request = NSFetchRequest<NSManagedObject>(entityName: "Category")
-           
-           do {
-               let fetchedProducts = try getContext()?.fetch(request)
-               return fetchedProducts ?? nil
-           } catch let error {
-               print("Error: ", error.localizedDescription)
-           }
-           
-           return nil
-           
-       }
+        
+        let request = NSFetchRequest<NSManagedObject>(entityName: "Category")
+        
+        do {
+            let fetchedProducts = try getContext()?.fetch(request)
+            return fetchedProducts ?? nil
+        } catch let error {
+            print("Error: ", error.localizedDescription)
+        }
+        
+        return nil
+        
+    }
+    
+    func fetchCategoryWithName(entityName: String, categoryName: String) -> Category? {
+        
+        let request = NSFetchRequest<NSManagedObject>(entityName: "Category")
+        request.predicate = NSPredicate(format: "name = %@", categoryName)
+        
+        do {
+            let fetchedCategory = try getContext()?.fetch(request) as? [Category]
+            return fetchedCategory?.first ?? nil
+        } catch let error {
+            print("Error: ", error.localizedDescription)
+        }
+        
+        return nil
+        
+    }
     
 }

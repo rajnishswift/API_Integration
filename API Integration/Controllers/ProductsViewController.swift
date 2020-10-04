@@ -35,19 +35,43 @@ class ProductsViewController: BaseViewController {
     var products = [ProductValue]()
     var category = [CategoryValue]()
     var catName = "Spanners"
+    var databseCategory: Category?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
+        setCategoryForProducts()
         getProducts()
+        
+        title = catName
 
     }
+    
+    func setCategoryForProducts() {
+        databseCategory = DataBaseManager.manager.fetchCategoryWithName(entityName: "Category", categoryName: catName)
+    }
+
     
     func getProducts() {
         
         ApiManager.shared.fetchProducts(urlString: EndPoint.getProducts(catName).url, success: { (model) in
             
             self.products = model.products
-            self.products.forEach({self.addProductsToDatabase(product: $0)})
+            //self.products.forEach({self.addProductsToDatabase(product: $0)})
+            self.products.forEach { (product) in
+                if let dbProduct = self.addProductsToDatabase(product: product){
+                    self.databseCategory?.addToProducts(dbProduct)
+                }
+            }
+            
+            guard let managedObjectContext = DataBaseManager.manager.getContext() else {return}
+            
+            do {
+                try managedObjectContext.save()
+            } catch let error {
+                print("Error: ", error.localizedDescription)
+            }
+            
             self.tableView.reloadData()
             
         }) { (error) in
@@ -68,17 +92,17 @@ class ProductsViewController: BaseViewController {
         
     }
     
-    func addProductsToDatabase(product: ProductValue) {
+    func addProductsToDatabase(product: ProductValue) -> Product?  {
         
         // Check if duplicate exists for this product in database.
         // If so, do not add this product to database
-        if checkForDuplicateInDataBase(productValue: product) {return}
+        if checkForDuplicateInDataBase(productValue: product) {return nil}
         
-        guard let managedObjectContext = DataBaseManager.manager.getContext() else {return}
+        guard let managedObjectContext = DataBaseManager.manager.getContext() else {return nil}
         
         /* Find the entity you are trying to insert object in */
         
-        guard let productEntity = NSEntityDescription.entity(forEntityName: "Product", in: managedObjectContext) else {return}
+        guard let productEntity = NSEntityDescription.entity(forEntityName: "Product", in: managedObjectContext) else {return nil }
         
         /* Insert Data into Product Entity */
         let managedProduct = NSManagedObject(entity: productEntity, insertInto: managedObjectContext)
@@ -89,18 +113,21 @@ class ProductsViewController: BaseViewController {
         
         // You have now inserted data into your database, but your context has not been saved.
         
-        do {
-            try managedObjectContext.save()
-        } catch let error {
-            print("Error: ", error.localizedDescription)
-        }
+//        do {
+//            try managedObjectContext.save()
+//        } catch let error {
+//            print("Error: ", error.localizedDescription)
+//        }
+        
+        return managedProduct as? Product
         
     }
     
     
     func fetchDataFromDataBase() {
         
-        guard let products = DataBaseManager.manager.fetchData(entityName: "Product") else {return}
+        guard let category = DataBaseManager.manager.fetchCategoryWithName(entityName: "Category", categoryName: catName) else { return }
+        guard let products = category.products?.array as? [Product] else { return }
         
         products.forEach { (product) in
             
@@ -108,12 +135,12 @@ class ProductsViewController: BaseViewController {
                 let id = product.value(forKey: "id") as? String,
                 let name = product.value(forKey: "name") as? String,
                 let image = product.value(forKey: "image") as? String
-                else {return}
+                else { return }
             
             let viewProduct = ProductValue(id: id, image: image, name: name)
             self.products.append(viewProduct)
-            
         }
+        self.tableView.reloadData()
         
     }
     
@@ -189,10 +216,12 @@ extension ProductsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 50
+        return 0
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        return nil
         
         let footerView = UIView()
         
@@ -223,7 +252,7 @@ extension ProductsViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
